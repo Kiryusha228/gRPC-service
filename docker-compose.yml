@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  tarantool:
+    image: tarantool/tarantool:3.2
+    container_name: tarantool
+    ports:
+      - "${TARANTOOL_PORT}:${TARANTOOL_PORT}"
+    environment:
+      PORT: ${TARANTOOL_PORT}
+      CRUD_USER: ${TARANTOOL_CRUD_USER_NAME}
+      CRUD_PASS: ${TARANTOOL_CRUD_USER_PASSWORD}
+    volumes:
+      - ./app:/opt/tarantool
+    command: tarantool /opt/tarantool/init.lua

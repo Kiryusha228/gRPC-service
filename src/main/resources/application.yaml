@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: grpc-service
+  config:
+    import: optional:file:.env[.properties]
+
+grpc:
+  server:
+    port: 9090
+  client:
+    greeting-service:
+      address: static://localhost:9090
+      negotiation-type: plaintext
+
+logging:
+  level:
+    com.example.grpc: DEBUG
+
+tarantool:
+  host: ${TARANTOOL_HOST}
+  port: ${TARANTOOL_PORT}
+  crud-user-password: ${TARANTOOL_CRUD_USER_PASSWORD}
+  crud-user-name: ${TARANTOOL_CRUD_USER_NAME}
+  batch-size: ${TARANTOOL_BATCH_SIZE}
